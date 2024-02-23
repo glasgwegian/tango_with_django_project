@@ -86,12 +86,13 @@ def add_category(request):
 	return render(request, 'rango/add_category.html', {'form': form})
 
 def add_page(request, category_name_slug):
-	form = CategoryForm()
 
 	try:
 		category = Category.objects.get(slug=category_name_slug)
 	except Category.DoesNotExist:
 		category = None
+
+		print(category_name_slug)
 		
 	if category is None:
 		return redirect('/rango/')
